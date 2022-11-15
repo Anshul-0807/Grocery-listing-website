@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>my portfolio</title>
+</head>
+<body>
+   <header>
+   
+        
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link disabled">Disabled</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+   </header>
+
+   <main>
+    <div class="container mt-5 col-6">
+    <div class="input-group mb-3">
+        <input  type="text" class="form-control" placeholder="Grocery product" aria-label="Recipient's username" aria-describedby="button-addon2" >
+        <button id="add_btn" class="btn btn-outline-success" type="button" id="button-addon2">Add</button>
+      </div>
+    
+    <ul id="parentlist" class="list-group">
+        <li class="list-group-item d-flex justify-content-between">
+         <h3 class="flex-grow-1">kirti gold oil</h3>
+           <button class="btn btn-warning mx-3 "  onclick="editchapter(this)" >Edit</button>
+            <button class="btn btn-danger" onclick="removechapter(this)">Remove</button>
+          </li>
+        
+      </ul>
+    </div>
+   
+   </main>
+
+   <footer class="text-center text-white fixed-bottom"  style="background-color: #f8f5f1;">
+    <!-- Grid container -->
+    <div class="container pt-4 " >
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <!-- Github -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © copyright 2022 :
+      <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+
+
+
+
+
+
+
+
+   <script>
+
+
+//       [TRY TO PUT THEIR ENTER BTN WHEN CLICK ON ADD]
+//
+// var input = document.getElementById("input");
+// input.addEventListener("keypress", function(event) {
+//   if (event.key === "Enter") {
+//     event.preventDefault();
+//     document.getElementById("add_btn").click();    (enter btn se click karne ka try kar rha tha)
+
+    let addbtn = document.getElementById('add_btn')
+    addbtn.addEventListener('click', addchapter)
+    let parentlist = document.getElementById('parentlist')
+     function addchapter(e){
+       if(parentlist.children[0].className == "emptymsg"){
+       parentlist.children[0].remove()
+       }
+      // if(e.value== undefined){
+      //   window.alert("please add the product");
+      //   return;
+      // }
+
+       let currentBtn = e.currentTarget;
+       let currentInput = currentBtn.previousElementSibling;
+       let currentchapterName = currentInput.value
+
+      //  console.log(currentInput.value)                      
+
+
+       
+       let Newli = document.createElement('li')
+       // Newli.classList.add('list-group-item')
+      // Newli.textContent = currentInput.value    //(create element ko hatakar inner html ka use karenge)
+       
+       Newli.className = "list-group-item d-flex justify-content-between"
+       Newli.innerHTML =  `<h3 class="flex-grow-1">${currentInput.value}</h3>
+           <button class="btn btn-warning mx-3 " onclick ="editchapter(this)" >Edit</button>
+            <button class="btn btn-danger" onclick="removechapter(this)" >remove</button>`               //inner html
+
+       
+       parentlist.appendChild(Newli)
+     
+      
+
+
+    }
+    function removechapter(currElement){
+      currElement.parentElement.remove()
+      let parentlist = document.getElementById('parentlist')
+      if(parentlist.children.length <= 0){
+        let newEmptymsg = document.createElement("h3")
+        newEmptymsg.classList.add("emptymsg")
+        newEmptymsg.textContent  = "Nothing is here. please add a product!!"
+        newEmptymsg.style.textAlign = "center"
+        parentlist.appendChild(newEmptymsg)
+      }
+      }
+
+      function editchapter(currElement){
+       // console.log(currElement.previousElementSibling)
+       if(currElement.textContent == "Done"){
+         currElement.textContent = "Edit"
+         let currchapterName = currElement.previousElementSibling.value
+         let currHeading = document.createElement('h3');
+         currHeading.className = "flex-grow-1"
+         currHeading.textContent = currchapterName
+         
+         currElement.parentElement.replaceChild(currHeading, currElement.previousElementSibling )
+
+       }
+       else{
+
+       
+        currElement.textContent = "Done"
+        let currchapterName = currElement.previousElementSibling.textContent
+        let currinput = document.createElement('input');
+        currinput.type = "text"
+        currinput.className = "form-control"
+        
+        currinput.placeholder = "grocery product"
+        
+        currinput.value = currchapterName;
+
+        currElement.parentElement.replaceChild(currinput, currElement.previousElementSibling )
+       }
+      
+      }
+</script>
+</body>
+</html>
